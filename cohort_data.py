@@ -158,7 +158,22 @@ def all_students_tuple_list(filename):
 
     # Code goes here
 
+    house_file = open(filename)
+    for line in house_file:
+        line = line.rstrip()
+        data = line.split("|")
+        house = data[2]
+        cohort = data[4]
+        student = data[0] + " " + data[1]
+        advisor = data[3]
+        student_list.append((student, house, advisor, cohort))
+
+    house_file.close()
+
     return student_list
+
+print all_students_tuple_list("cohort_data.txt")
+
 
 
 def find_cohort_by_student_name(student_list):
@@ -169,8 +184,16 @@ def find_cohort_by_student_name(student_list):
     'Student not found.' when appropriate. """
 
     # Code goes here
+    student_name = raw_input("Student name: ")
+    for student in student_list:
+        if student_name == student[0] and student[3] != "I" and student[3] != "TA":
+            return student[3] 
+        else:
+            return "Student not found."
 
-    return "Student not found."
+
+
+print find_cohort_by_student_name(all_students_tuple_list("cohort_data.txt"))
 
 
 ##########################################################################################
