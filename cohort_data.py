@@ -215,6 +215,57 @@ def find_name_duplicates(filename):
     duplicate_names = set()
 
     # Code goes here
+    all_students = []
+    gryffindor = []
+    hufflepuff = []
+    slytherin = []
+    dumbledores_army = []
+    order_of_the_phoenix = []
+    ravenclaw = []
+    tas = []
+    instructors = []
+
+    # Code goes here
+    house_file = open(filename)
+    for line in house_file:
+        line = line.rstrip()
+        data = line.split("|")
+        house = data[2]
+        cohort = data[4]
+        student = data[0]
+        if cohort == "I":
+            instructors.append(student)
+        elif cohort == "TA":
+            tas.append(student)
+        else:
+            if house == "Gryffindor":
+                gryffindor.append(student)
+            elif house == "Slytherin":
+                slytherin.append(student)
+            elif house == "Order of the Phoenix":
+                order_of_the_phoenix.append(student)
+            elif house == "Hufflepuff":
+                hufflepuff.append(student)
+            elif house == "Ravenclaw":
+                ravenclaw.append(student)
+            else:
+                dumbledores_army.append(student)
+
+    all_students = [hufflepuff, gryffindor, ravenclaw, slytherin, dumbledores_army, order_of_the_phoenix, tas, instructors]
+        
+
+    house_file.close()
+
+    for student_house in all_students:
+        house_names_set = set()
+        for item in student_house:
+            house_names_set.add(item)
+
+            # trying to put names of individual houses into indiv sets
+
+    for group in house_names_set:
+
+
 
     return duplicate_names
 
