@@ -30,8 +30,6 @@ def unique_houses(filename):
 
 print unique_houses("cohort_data.txt")
 
-print "GIT HUB ASDGSAGDJ"
-
 
 def sort_by_cohort(filename):
     """TODO: Sort students by cohort.
@@ -188,10 +186,11 @@ def find_cohort_by_student_name(student_list):
     # Code goes here
     student_name = raw_input("Student name: ")
     for student in student_list:
-        if student_name == student[0] and student[3] != "I" and student[3] != "TA":
-            return student[3] 
+        if (student[3] == "I" or student[3] == "TA") and student_name == student[0]:
+            return "Student not found"
         else:
-            return "Student not found."
+            if student_name == student[0]:
+                return student[3]
 
 
 
